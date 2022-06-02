@@ -1,47 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
-import {
-    WiCloud,
-    WiDayCloudy,
-    WiDayFog,
-    WiDaySunny,
-    WiRain,
-} from 'react-icons/wi';
 import { IconContext } from 'react-icons';
-
-const validValues = ['cloud', 'cloudy', 'fog', 'sunny', 'rain'];
-
-const StateByName = {
-    Cloud: WiCloud,
-    Cloudy: WiDayCloudy,
-    Fog: WiDayFog,
-    Sunny: WiDaySunny,
-    Rain: WiRain,
-};
-
-const renderState = (state) => {
-    switch (state) {
-        case 'cloud':
-            return <StateByName.Cloud />;
-        case 'cloudy':
-            return <StateByName.Cloudy />;
-        case 'fog':
-            return <StateByName.Fog />;
-        case 'sunny':
-            return <StateByName.Sunny />;
-        case 'rain':
-            return <StateByName.Rain />;
-        default:
-            return <StateByName.Sunny />;
-    }
-};
+import IconState, { validValues } from '../IconState';
 
 const Weather = ({ temperature, state }) => {
     return (
         <>
             <IconContext.Provider value={{ size: '3em' }}>
-                {renderState(state)}
+                <IconState state={state} />
             </IconContext.Provider>
             <Typography display={'inline'} variant="h3" data-testid="heading">
                 {temperature}
